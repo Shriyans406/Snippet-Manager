@@ -9,3 +9,15 @@ __pycache__/
 logs/*.log
 
 cmd.txt
+
+# Generated scanner output
+data/files.json
+
+# Future generated files
+data/*.json
+
+venv
+.git
+node_modules
+target
+__pycache__

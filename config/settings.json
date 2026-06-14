@@ -1,16 +1,18 @@
 {
-  "scan_directories": [],
-  "supported_extensions": [
-    ".py",
-    ".js",
-    ".ts",
-    ".rs",
-    ".c",
-    ".cpp",
-    ".java",
-    ".css",
-    ".html"
-  ],
-  "database_path": "../database/snippets.db",
-  "web_port": 8000
+    "scan_directories": [
+        "/home/vboxuser/projects"
+    ],
+    "supported_extensions": [
+        ".py",
+        ".js",
+        ".ts",
+        ".rs",
+        ".c",
+        ".cpp",
+        ".java",
+        ".css",
+        ".html"
+    ],
+    "database_path": "../database/snippets.db",
+    "web_port": 8000
 }

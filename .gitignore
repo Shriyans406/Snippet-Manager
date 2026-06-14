@@ -1,0 +1,11 @@
+venv/
+database/*.db
+
+target/
+
+__pycache__/
+*.pyc
+
+logs/*.log
+
+cmd.txt

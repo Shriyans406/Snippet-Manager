@@ -12,5 +12,9 @@ CREATE TABLE files (
 
     size INTEGER,
 
+    content TEXT,
+
+    line_count INTEGER,
+
     indexed_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );

@@ -2,18 +2,21 @@ import sqlite3
 import sys
 from pathlib import Path
 
-PROJECT_ROOT=Path(__file__).resolve().parent.parent
-DATABASE_FILE=PROJECT_ROOT / "database" / "snippets.db"
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+DATABASE_FILE = PROJECT_ROOT / "database" / "snippets.db"
 
 
 def search_database(query):
-    connection=sqlite3.connect(
+
+    connection = sqlite3.connect(
         DATABASE_FILE
     )
 
-    cursor=connection.cursor()
+    cursor = connection.cursor()
 
-    search_term=f"%{query}%"
+    search_term = f"%{query}%"
 
     cursor.execute(
         """
@@ -22,11 +25,10 @@ def search_database(query):
             path,
             extension,
             line_count
-        
+
         FROM files
 
         WHERE
-
 
             filename LIKE ?
             OR path LIKE ?
@@ -41,7 +43,7 @@ def search_database(query):
         )
     )
 
-    results=cursor.fetchall()
+    results = cursor.fetchall()
 
     connection.close()
 
@@ -49,47 +51,50 @@ def search_database(query):
 
 
 def print_results(results):
+
     print()
-    print ("="*60)
+    print("=" * 60)
 
     print(
-        f"Found{len(results)} matches"
+        f"Found {len(results)} matches"
     )
 
-    print("="*60)
+    print("=" * 60)
 
     for index, result in enumerate(results, start=1):
 
-        filename, path, extension, lines=result
+        filename, path, extension, lines = result
 
         print()
 
         print(f"[{index}] {filename}")
 
-        print(f"Path      :  {path}")
+        print(f"Path      : {path}")
 
-        print(f"Extension      :  {extension}")
+        print(f"Extension : {extension}")
 
-        print(f"Lines      :  {lines}")
+        print(f"Lines     : {lines}")
 
     print()
 
+
 def main():
 
-    if len(sys.argv)<2:
+    if len(sys.argv) < 2:
+
         print(
             "Usage:"
         )
 
         print(
-            "python serach/search.py keyword"
+            "python search/search.py keyword"
         )
 
-        return 
+        return
 
-    query= " ".join(sys.argv[1:])
+    query = " ".join(sys.argv[1:])
 
-    results=search_database(
+    results = search_database(
         query
     )
 
@@ -100,5 +105,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-

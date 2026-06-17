@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        Snippet Viewer
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>
+
+        {{ snippet[1] }}
+
+    </h1>
+
+    <p>
+
+        <b>Path:</b>
+
+        {{ snippet[2] }}
+
+    </p>
+
+    <p>
+
+        <b>Extension:</b>
+
+        {{ snippet[3] }}
+
+    </p>
+
+    <p>
+
+        <b>Lines:</b>
+
+        {{ snippet[4] }}
+
+    </p>
+
+    <button onclick="copyCode()">
+
+        Copy Code
+
+    </button>
+
+    <hr>
+
+    <pre id="code-block">
+
+{{ snippet[5] }}
+
+</pre>
+
+    <script>
+
+        function copyCode() {
+
+            const code =
+                document.getElementById(
+                    "code-block"
+                ).innerText;
+
+            navigator.clipboard.writeText(
+                code
+            );
+
+            alert(
+                "Code copied!"
+            );
+        }
+
+    </script>
+
+    <br>
+    <br>
+
+    <a href="/">
+
+        Back To Search
+
+    </a>
+
+</body>
+
+</html>

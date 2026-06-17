@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        Snippet Manager
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <h1>
+        Code Snippet Manager
+    </h1>
+
+    <form
+        action="/search"
+        method="get"
+    >
+
+        <input
+            type="text"
+            name="q"
+            placeholder="Search code..."
+        >
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+</body>
+
+</html>

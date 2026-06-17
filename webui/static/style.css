@@ -1,0 +1,23 @@
+body {
+
+    font-family: Arial;
+
+    margin: 40px;
+}
+
+input {
+
+    width: 400px;
+
+    padding: 10px;
+}
+
+button {
+
+    padding: 10px;
+}
+
+h1 {
+
+    color: #333;
+}

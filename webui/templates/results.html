@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        Results
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>
+
+        Search Results
+
+    </h1>
+
+    <p>
+
+        Query:
+        <b>{{ query }}</b>
+
+    </p>
+
+    <p>
+
+        Found:
+        <b>{{ results|length }}</b>
+
+        results
+
+    </p>
+
+    <hr>
+
+    {% for result in results %}
+
+    <div>
+
+        <h3>
+
+            {{ result[0] }}
+
+        </h3>
+
+        <p>
+
+            Path:
+            {{ result[1] }}
+
+        </p>
+
+        <p>
+
+            Extension:
+            {{ result[2] }}
+
+        </p>
+
+        <p>
+
+            Lines:
+            {{ result[3] }}
+
+        </p>
+
+        <hr>
+
+    </div>
+
+    {% endfor %}
+
+    <a href="/">
+
+        Back
+
+    </a>
+
+</body>
+
+</html>

@@ -43,28 +43,32 @@
 
         <h3>
 
-            {{ result[0] }}
+            <a href="/snippet/{{ result[0] }}">
+
+                {{ result[1] }}
+
+            </a>
 
         </h3>
 
         <p>
 
             Path:
-            {{ result[1] }}
-
-        </p>
-
-        <p>
-
-            Extension:
             {{ result[2] }}
 
         </p>
 
         <p>
 
-            Lines:
+            Extension:
             {{ result[3] }}
+
+        </p>
+
+        <p>
+
+            Lines:
+            {{ result[4] }}
 
         </p>
 

@@ -26,6 +26,7 @@ def search_database(query):
     cursor.execute(
         """
         SELECT
+            id,
             filename,
             path,
             extension,
@@ -55,6 +56,38 @@ def search_database(query):
     return results
 
 
+def get_file_by_id(file_id):
+
+    connection = sqlite3.connect(
+        DATABASE_FILE
+    )
+
+    cursor = connection.cursor()
+
+    cursor.execute(
+        """
+        SELECT
+            id,
+            filename,
+            path,
+            extension,
+            line_count,
+            content
+
+        FROM files
+
+        WHERE id = ?
+        """,
+        (file_id,)
+    )
+
+    result = cursor.fetchone()
+
+    connection.close()
+
+    return result
+
+
 @app.route("/")
 def home():
 
@@ -79,6 +112,19 @@ def search():
         "results.html",
         query=query,
         results=results
+    )
+
+
+@app.route("/snippet/<int:file_id>")
+def snippet(file_id):
+
+    result = get_file_by_id(
+        file_id
+    )
+
+    return render_template(
+        "snippet.html",
+        snippet=result
     )
 
 

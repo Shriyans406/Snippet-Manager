@@ -16,5 +16,7 @@ CREATE TABLE files (
 
     line_count INTEGER,
 
+    last_modified REAL,
+
     indexed_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );

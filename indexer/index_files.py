@@ -34,19 +34,21 @@ def insert_files(connection, files):
             cursor.execute(
                 """
                 INSERT OR IGNORE INTO files
-                (
-                    filename,
-                    path,
-                    extension,
-                    size
-                )
-                VALUES (?, ?, ?, ?)
+(
+    filename,
+    path,
+    extension,
+    size,
+    last_modified
+)
+VALUES (?, ?, ?, ?, ?)
                 """,
                 (
-                    file["filename"],
-                    file["path"],
-                    file["extension"],
-                    file["size"]
+    file["filename"],
+    file["path"],
+    file["extension"],
+    file["size"],
+    file["last_modified"]
                 )
             )
 

@@ -33,13 +33,14 @@ def scan_directories(directories, extensions):
                 if file_path.suffix.lower() in extensions:
 
                     discovered_files.append(
-                        {
-                            "filename": file_path.name,
-                            "path": str(file_path),
-                            "extension": file_path.suffix,
-                            "size": file_path.stat().st_size
-                        }
-                    )
+    {
+        "filename": file_path.name,
+        "path": str(file_path),
+        "extension": file_path.suffix,
+        "size": file_path.stat().st_size,
+        "last_modified": file_path.stat().st_mtime
+    }
+)
 
     return discovered_files
 

@@ -1,4 +1,4 @@
-from advanced_search import search
+from search_engine.advanced_search import search
 
 results = search(
     '"sqlite3"'

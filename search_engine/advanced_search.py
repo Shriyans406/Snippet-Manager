@@ -2,7 +2,7 @@ import sqlite3
 
 from pathlib import Path
 
-from query_parser import (
+from search_engine.query_parser import (
     parse_query
 )
 

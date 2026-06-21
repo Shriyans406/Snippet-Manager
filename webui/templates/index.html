@@ -43,8 +43,139 @@
             Search
         </button>
 
+        <br>
+        <br>
+
+        <button type="button" onclick="refreshIndex()">
+
+            Refresh Index
+
+        </button>
+
+        <br>
+        <br>
+
+        <label>
+
+            Language
+
+        </label>
+
+        <select name="language">
+
+            <option value="">
+
+                All
+
+            </option>
+
+            <option value="python">
+
+                Python
+
+            </option>
+
+            <option value="javascript">
+
+                JavaScript
+
+            </option>
+
+            <option value="rust">
+
+                Rust
+
+            </option>
+
+        </select>
+
+        <br>
+        <br>
+
+        <label>
+
+            Extension
+
+        </label>
+
+        <select name="extension">
+
+            <option value="">
+
+                All
+
+            </option>
+
+            <option value="py">
+
+                .py
+
+            </option>
+
+            <option value="js">
+
+                .js
+
+            </option>
+
+            <option value="rs">
+
+                .rs
+
+            </option>
+
+        </select>
+
+        <br>
+        <br>
+
+        <label>
+
+            Match Type
+
+        </label>
+
+        <select name="match_type">
+
+            <option value="normal">
+
+                Normal
+
+            </option>
+
+            <option value="exact">
+
+                Exact
+
+            </option>
+
+        </select>
+
+
     </form>
 
+
 </body>
+
+<script>
+
+    function refreshIndex() {
+
+        fetch(
+            "/refresh"
+        )
+
+            .then(
+                response =>
+                    response.text()
+            )
+
+            .then(
+                data =>
+                    alert(data)
+            );
+    }
+
+</script>
 
 </html>

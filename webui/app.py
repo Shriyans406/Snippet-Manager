@@ -7,6 +7,9 @@ from dashboard.status import (
     get_total_files
 )
 
+
+import subprocess
+
 import sqlite3
 from pathlib import Path
 
@@ -131,6 +134,22 @@ def snippet(file_id):
     return render_template(
         "snippet.html",
         snippet=result
+    )
+
+
+
+@app.route("/refresh")
+def refresh():
+
+    subprocess.run(
+        [
+            "python",
+            "indexer/update_changed_files.py"
+        ]
+    )
+
+    return (
+        "Index Refreshed"
     )
 
 

@@ -12,6 +12,7 @@ from dashboard.refresh_info import (
 )
 
 
+import sys
 import subprocess
 
 import sqlite3
@@ -19,6 +20,14 @@ from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+sys.path.append(
+    str(PROJECT_ROOT)
+)
 
 DATABASE_FILE = PROJECT_ROOT / "database" / "snippets.db"
 

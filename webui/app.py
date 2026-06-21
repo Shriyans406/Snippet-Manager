@@ -2,6 +2,11 @@ from flask import Flask
 from flask import render_template
 from flask import request
 
+
+from dashboard.status import (
+    get_total_files
+)
+
 import sqlite3
 from pathlib import Path
 
@@ -92,8 +97,9 @@ def get_file_by_id(file_id):
 def home():
 
     return render_template(
-        "index.html"
-    )
+    "index.html",
+    total_files=get_total_files()
+)
 
 
 @app.route("/search")

@@ -7,10 +7,7 @@
         Snippet Manager
     </title>
 
-    <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='style.css') }}"
-    >
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
@@ -20,16 +17,27 @@
         Code Snippet Manager
     </h1>
 
-    <form
-        action="/search"
-        method="get"
-    >
+    <hr>
 
-        <input
-            type="text"
-            name="q"
-            placeholder="Search code..."
-        >
+    <h3>
+
+        Indexed Files:
+        {{ total_files }}
+
+    </h3>
+
+    <h3 id="watcher-status">
+
+        Watcher Status:
+        Running
+
+    </h3>
+
+    <hr>
+
+    <form action="/search" method="get">
+
+        <input type="text" name="q" placeholder="Search code...">
 
         <button type="submit">
             Search

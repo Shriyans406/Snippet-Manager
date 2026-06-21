@@ -7,6 +7,10 @@ from dashboard.status import (
     get_total_files
 )
 
+from dashboard.refresh_info import (
+    get_refresh_time
+)
+
 
 import subprocess
 
@@ -101,7 +105,8 @@ def home():
 
     return render_template(
     "index.html",
-    total_files=get_total_files()
+    total_files=get_total_files(),
+    refresh_time=get_refresh_time()
 )
 
 

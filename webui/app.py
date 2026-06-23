@@ -1,7 +1,15 @@
+import sys
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+sys.path.append(
+    str(PROJECT_ROOT)
+)
+
 from flask import Flask
 from flask import render_template
 from flask import request
-
 
 from dashboard.status import (
     get_total_files
@@ -16,22 +24,8 @@ from utils.highlighter import (
     get_style
 )
 
-import sys
 import subprocess
-
 import sqlite3
-from pathlib import Path
-
-
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-import sys
-from pathlib import Path
-
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-
-sys.path.append(
-    str(PROJECT_ROOT)
-)
 
 DATABASE_FILE = PROJECT_ROOT / "database" / "snippets.db"
 

@@ -3,6 +3,14 @@
 
 <head>
 
+    <style>
+        {
+                {
+                css|safe
+            }
+        }
+    </style>
+
     <title>
         Snippet Viewer
     </title>
@@ -51,23 +59,18 @@
 
     <hr>
 
-    <pre id="code-block">
+    <div id="code-block">
 
-{{ snippet[5] }}
+        {{ highlighted|safe }}
 
-</pre>
+    </div>
 
     <script>
 
         function copyCode() {
 
-            const code =
-                document.getElementById(
-                    "code-block"
-                ).innerText;
-
             navigator.clipboard.writeText(
-                code
+                `{{ snippet[5] }}`
             );
 
             alert(

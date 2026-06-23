@@ -11,6 +11,10 @@ from dashboard.refresh_info import (
     get_refresh_time
 )
 
+from utils.highlighter import (
+    highlight_code,
+    get_style
+)
 
 import sys
 import subprocess
@@ -145,9 +149,16 @@ def snippet(file_id):
         file_id
     )
 
+    highlighted = highlight_code(
+        result[5],
+        "python"
+    )
+
     return render_template(
         "snippet.html",
-        snippet=result
+        snippet=result,
+        highlighted=highlighted,
+        css=get_style()
     )
 
 

@@ -10,6 +10,12 @@ sys.path.append(
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import redirect
+
+from tags.tag_manager import (
+    add_tag,
+    get_tags
+)
 
 from dashboard.status import (
     get_total_files
@@ -152,7 +158,8 @@ def snippet(file_id):
         "snippet.html",
         snippet=result,
         highlighted=highlighted,
-        css=get_style()
+        css=get_style(),
+        tags=get_tags(file_id)
     )
 
 
@@ -171,6 +178,28 @@ def refresh():
         "Index Refreshed"
     )
 
+@app.route(
+    "/add_tag",
+    methods=["POST"]
+)
+def add_tag_route():
+
+    file_id = int(
+        request.form["file_id"]
+    )
+
+    tag = request.form["tag"].strip()
+
+    if tag:
+
+        add_tag(
+            file_id,
+            tag
+        )
+
+    return redirect(
+        f"/snippet/{file_id}"
+    )
 
 if __name__ == "__main__":
 

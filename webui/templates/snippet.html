@@ -57,6 +57,58 @@
 
     </button>
 
+
+    <h2>
+
+        Tags
+
+    </h2>
+
+    {% if tags %}
+
+    <ul>
+
+        {% for tag in tags %}
+
+        <li>
+
+            {{ tag[0] }}
+
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+    {% else %}
+
+    <p>
+
+        No tags added yet.
+
+    </p>
+
+    {% endif %}
+
+    <form action="/add_tag" method="POST">
+
+        <input type="hidden" name="file_id" value="{{ snippet[0] }}">
+
+        <input type="text" name="tag" placeholder="Enter tag">
+
+        <button type="submit">
+
+            Add Tag
+
+        </button>
+
+    </form>
+
+    <hr>
+
+
+
+
     <hr>
 
     <div id="code-block">

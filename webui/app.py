@@ -30,6 +30,15 @@ from utils.highlighter import (
     get_style
 )
 
+
+from favorites.favorite_manager import (
+    add_favorite,
+    remove_favorite,
+    get_all_favorites,
+    is_favorite
+)
+
+
 import subprocess
 import sqlite3
 
@@ -155,12 +164,13 @@ def snippet(file_id):
     )
 
     return render_template(
-        "snippet.html",
-        snippet=result,
-        highlighted=highlighted,
-        css=get_style(),
-        tags=get_tags(file_id)
-    )
+    "snippet.html",
+    snippet=result,
+    highlighted=highlighted,
+    css=get_style(),
+    tags=get_tags(file_id),
+    favorite=is_favorite(file_id)
+)
 
 
 
@@ -200,6 +210,33 @@ def add_tag_route():
     return redirect(
         f"/snippet/{file_id}"
     )
+
+
+@app.route("/favorite/<int:file_id>")
+def favorite(file_id):
+
+    if is_favorite(file_id):
+
+        remove_favorite(file_id)
+
+    else:
+
+        add_favorite(file_id)
+
+    return redirect(
+        f"/snippet/{file_id}"
+    )
+
+@app.route("/favorites")
+def favorites():
+
+    results = get_all_favorites()
+
+    return render_template(
+        "favorites.html",
+        results=results
+    )
+
 
 if __name__ == "__main__":
 

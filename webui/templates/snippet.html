@@ -27,6 +27,27 @@
 
     </h1>
 
+    {% if favorite %}
+
+    <a href="/favorite/{{ snippet[0] }}">
+
+        ⭐ Remove From Favorites
+
+    </a>
+
+    {% else %}
+
+    <a href="/favorite/{{ snippet[0] }}">
+
+        ☆ Add To Favorites
+
+    </a>
+
+    {% endif %}
+
+    <br>
+    <br>
+
     <p>
 
         <b>Path:</b>

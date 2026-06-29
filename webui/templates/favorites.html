@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>
+
+        Favorites
+
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>
+
+        ⭐ Favorite Snippets
+
+    </h1>
+
+    <hr>
+
+    {% if results %}
+
+    <ul>
+
+        {% for item in results %}
+
+        <li>
+
+            <a href="/snippet/{{ item[0] }}">
+
+                {{ item[1] }}
+
+            </a>
+
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+    {% else %}
+
+    <p>
+
+        No favorite snippets yet.
+
+    </p>
+
+    {% endif %}
+
+    <hr>
+
+    <a href="/">
+
+        Back To Search
+
+    </a>
+
+</body>
+
+</html>

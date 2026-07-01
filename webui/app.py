@@ -158,19 +158,25 @@ def snippet(file_id):
         file_id
     )
 
+    code = result[5]
+
+    if code is None:
+        code = "File content unavailable."    
+
     highlighted = highlight_code(
-        result[5],
-        "python"
+     code,
+     "python"
     )
 
     return render_template(
-    "snippet.html",
-    snippet=result,
-    highlighted=highlighted,
-    css=get_style(),
-    tags=get_tags(file_id),
-    favorite=is_favorite(file_id)
-)
+        "snippet.html",
+        snippet=result,
+        code=code,
+        highlighted=highlighted,
+        css=get_style(),
+        tags=get_tags(file_id),
+        favorite=is_favorite(file_id)
+    )
 
 
 

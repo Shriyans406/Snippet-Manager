@@ -127,6 +127,42 @@
 
     <hr>
 
+    <h2>
+
+        Collections
+
+    </h2>
+
+    <form action="/add_to_collection" method="POST">
+
+        <input type="hidden" name="file_id" value="{{ snippet[0] }}">
+
+        <select name="collection_id">
+
+            {% for collection in collections %}
+
+            <option value="{{ collection[0] }}">
+
+                {{ collection[1] }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+        <button type="submit">
+
+            Add To Collection
+
+        </button>
+
+    </form>
+
+    <hr>
+
+    <hr>
+
 
 
 

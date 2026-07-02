@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>
+
+        Collections
+
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>
+
+        Collections
+
+    </h1>
+
+    <form action="/create_collection" method="POST">
+
+        <input type="text" name="name" placeholder="Collection Name">
+
+        <button type="submit">
+
+            Create
+
+        </button>
+
+    </form>
+
+    <hr>
+
+    <ul>
+
+        {% for collection in collections %}
+
+        <li>
+
+            <a href="/collection/{{ collection[0] }}">
+
+                {{ collection[1] }}
+
+            </a>
+
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+    <hr>
+
+    <a href="/">
+
+        Back To Search
+
+    </a>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>
+
+        Collection
+
+    </title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <h1>
+
+        Collection Snippets
+
+    </h1>
+
+    <ul>
+
+        {% for file in files %}
+
+        <li>
+
+            <a href="/snippet/{{ file[0] }}">
+
+                {{ file[1] }}
+
+            </a>
+
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+    <hr>
+
+    <a href="/collections">
+
+        Back To Collections
+
+    </a>
+
+</body>
+
+</html>

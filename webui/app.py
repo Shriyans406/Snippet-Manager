@@ -38,6 +38,13 @@ from favorites.favorite_manager import (
     is_favorite
 )
 
+from snippet_collections.collection_manager import (
+    create_collection,
+    get_all_collections,
+    add_file_to_collection,
+    get_collection_files
+)
+
 
 import subprocess
 import sqlite3
@@ -171,11 +178,11 @@ def snippet(file_id):
     return render_template(
         "snippet.html",
         snippet=result,
-        code=code,
         highlighted=highlighted,
         css=get_style(),
         tags=get_tags(file_id),
-        favorite=is_favorite(file_id)
+        favorite=is_favorite(file_id),
+        collections=get_all_collections()
     )
 
 
@@ -243,6 +250,61 @@ def favorites():
         results=results
     )
 
+
+@app.route(
+    "/create_collection",
+    methods=["POST"]
+)
+def create_collection_route():
+
+    name = request.form["name"].strip()
+
+    if name:
+
+        create_collection(name)
+
+    return redirect("/collections")
+
+
+@app.route(
+    "/add_to_collection",
+    methods=["POST"]
+)
+def add_to_collection_route():
+
+    file_id = int(
+        request.form["file_id"]
+    )
+
+    collection_id = int(
+        request.form["collection_id"]
+    )
+
+    add_file_to_collection(
+        collection_id,
+        file_id
+    )
+
+    return redirect(
+        f"/snippet/{file_id}"
+    )
+
+
+@app.route("/collections")
+def collections():
+
+    return render_template(
+        "collections.html",
+        collections=get_all_collections()
+    )
+
+@app.route("/collection/<int:collection_id>")
+def collection(collection_id):
+
+    return render_template(
+        "collection_files.html",
+        files=get_collection_files(collection_id)
+    )
 
 if __name__ == "__main__":
 

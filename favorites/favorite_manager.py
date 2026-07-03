@@ -1,22 +1,23 @@
-import sqlite3
+#import sqlite3
 from pathlib import Path
 
 PROJECT_ROOT = (
     Path(__file__).resolve().parent.parent
 )
 
-DATABASE_FILE = (
-    PROJECT_ROOT /
-    "database" /
-    "snippets.db"
-)
+#DATABASE_FILE = (
+ #   PROJECT_ROOT /
+ #   "database" /
+ #   "snippets.db"
+#)
 
+from database.db_manager import (
+    get_connection
+)
 
 def add_favorite(file_id):
 
-    connection = sqlite3.connect(
-        DATABASE_FILE
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 
@@ -37,9 +38,7 @@ def add_favorite(file_id):
 
 def remove_favorite(file_id):
 
-    connection = sqlite3.connect(
-        DATABASE_FILE
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 
@@ -60,9 +59,7 @@ def remove_favorite(file_id):
 
 def get_all_favorites():
 
-    connection = sqlite3.connect(
-        DATABASE_FILE
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 
@@ -94,9 +91,7 @@ def get_all_favorites():
 
 def is_favorite(file_id):
 
-    connection = sqlite3.connect(
-        DATABASE_FILE
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 

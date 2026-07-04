@@ -1,21 +1,22 @@
-import sqlite3
+#import sqlite3
 from pathlib import Path
 
-PROJECT_ROOT = (
-    Path(__file__).resolve().parent.parent
-)
+#PROJECT_ROOT = (
+ #   Path(__file__).resolve().parent.parent
+#)
 
-DATABASE_FILE = (
-    PROJECT_ROOT /
-    "database" /
-    "snippets.db"
+#DATABASE_FILE = (
+ #   PROJECT_ROOT /
+  #  "database" /
+   # "snippets.db"
+#)
+from database.db_manager import (
+    get_connection
 )
 
 def create_collection(name):
 
-    connection = sqlite3.connect(
-        DATABASE_FILE
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 
@@ -36,9 +37,7 @@ def create_collection(name):
 
 def get_all_collections():
 
-    connection = sqlite3.connect(
-        DATABASE_FILE
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 
@@ -65,9 +64,7 @@ def add_file_to_collection(
     file_id
 ):
 
-    connection = sqlite3.connect(
-        DATABASE_FILE
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 
@@ -96,9 +93,7 @@ def get_collection_files(
     collection_id
 ):
 
-    connection = sqlite3.connect(
-        DATABASE_FILE
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 

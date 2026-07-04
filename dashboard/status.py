@@ -2,6 +2,10 @@ import sqlite3
 
 from pathlib import Path
 
+from database.db_manager import (
+    get_connection
+)
+
 
 PROJECT_ROOT = (
     Path(__file__)
@@ -19,9 +23,7 @@ DATABASE_FILE = (
 
 def get_total_files():
 
-    connection = sqlite3.connect(
-        DATABASE_FILE
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 

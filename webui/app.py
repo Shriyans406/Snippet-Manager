@@ -45,6 +45,10 @@ from snippet_collections.collection_manager import (
     get_collection_files
 )
 
+from database.db_manager import (
+    get_connection
+)
+
 
 import subprocess
 import sqlite3
@@ -56,9 +60,7 @@ app = Flask(__name__)
 
 def search_database(query):
 
-    connection = sqlite3.connect(
-        DATABASE_FILE
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 
@@ -99,9 +101,7 @@ def search_database(query):
 
 def get_file_by_id(file_id):
 
-    connection = sqlite3.connect(
-        DATABASE_FILE
-    )
+    connection = get_connection()
 
     cursor = connection.cursor()
 

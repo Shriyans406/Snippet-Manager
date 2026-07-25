@@ -178,6 +178,4 @@ The project is being built in phases. Each phase adds a new piece of functionali
 * If the collections page shows a missing table error, run the collection table creation script again.
 * If imports fail, make sure you are running commands from the project root.
 
-## License
 
-Add your preferred license here.
